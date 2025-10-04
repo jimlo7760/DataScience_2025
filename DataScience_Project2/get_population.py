@@ -90,3 +90,9 @@ if __name__ == "__main__":
         else:
             print("Error: No data retrieved")
 
+"""
+@version: Python 3.10
+@created by: Jim Lu
+@contact: jimlo7760@gmail.com
+@time: 10/2/25
+"""
