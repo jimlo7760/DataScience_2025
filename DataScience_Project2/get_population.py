@@ -9,7 +9,7 @@ CITY_FIPS = {
 }
 
 
-def get_city_population(city: str, api_key: str, start_year: int = 2014, end_year: int = 2024) -> pd.DataFrame:
+def get_city_population(city: str, api_key: str, start_year: int = 2014, end_year: int = 2023) -> pd.DataFrame:
     """
     Fetch city population data from U.S. Census Bureau API using ACS 1-Year Estimates.
 
@@ -72,19 +72,19 @@ if __name__ == "__main__":
         print(f"Fetching {CITY_FIPS[city]['name']} population data...")
         print('=' * 60)
 
-        df_pop = get_city_population(city, API_KEY, 2014, 2024)
+        df_pop = get_city_population(city, API_KEY, 2014, 2023)
 
         df_pop['City'] = CITY_FIPS[city]['name']
         all_data.append(df_pop)
 
-        print(f"\n{CITY_FIPS[city]['name']} POPULATION DATA (2014-2024)")
+        print(f"\n{CITY_FIPS[city]['name']} POPULATION DATA (2014-2023)")
         print("-" * 60)
 
         if not df_pop.empty:
             print(df_pop[['Year', 'Population']].to_string(index=False))
 
             # Save to individual CSV file
-            output_file = f"{city.lower()}_population_2014_2024.csv"
+            output_file = f"{city.lower()}_population_2014_2023.csv"
             df_pop[['Year', 'Population', 'City']].to_csv(output_file, index=False)
             print(f"\n Data saved to {output_file}")
         else:

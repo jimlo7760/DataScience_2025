@@ -5,14 +5,14 @@ from scipy import stats
 
 # Read the CSV files
 # Population data
-la_pop = pd.read_csv('la_population_2014_2024.csv')
-nyc_pop = pd.read_csv('nyc_population_2014_2024.csv')
-seattle_pop = pd.read_csv('seattle_population_2014_2024.csv')
+la_pop = pd.read_csv('la_population_2014_2023.csv')
+nyc_pop = pd.read_csv('nyc_population_2014_2023.csv')
+seattle_pop = pd.read_csv('seattle_population_2014_2023.csv')
 
 # Energy consumption data
-la_energy = pd.read_csv('LA_energy_2014_2024.csv')
-nyc_energy = pd.read_csv('NYC_energy_2014_2024.csv')
-seattle_energy = pd.read_csv('Seattle_energy_2014_2024.csv')
+la_energy = pd.read_csv('LA_energy_2014_2023.csv')
+nyc_energy = pd.read_csv('NYC_energy_2014_2023.csv')
+seattle_energy = pd.read_csv('Seattle_energy_2014_2023.csv')
 
 
 # Function to merge population and energy data for a city
@@ -79,7 +79,7 @@ def create_city_plot(city_data, city_name, filename):
 
     ax.set_xlabel('Population', fontsize=14, fontweight='bold')
     ax.set_ylabel('Energy Consumption (GWh)', fontsize=14, fontweight='bold')
-    ax.set_title(f'Energy Consumption vs Population\n{city_name} (2014-2024)',
+    ax.set_title(f'Energy Consumption vs Population\n{city_name} (2014-2023)',
                  fontsize=16, fontweight='bold', pad=20)
     ax.legend(fontsize=12, loc='upper left')
     ax.grid(True, alpha=0.3, linestyle='--')

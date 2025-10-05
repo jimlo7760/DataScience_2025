@@ -176,7 +176,7 @@ if __name__ == "__main__":
             output_df = output_df.sort_values('Year').reset_index(drop=True)
 
             # Save to CSV
-            filename = f"{city_code}_energy_2014_2024.csv"
+            filename = f"{city_code}_energy_2014_2023.csv"
             output_df.to_csv(filename, index=False)
             print(f"{city_name}: {filename} ({len(output_df)} years)")
 
