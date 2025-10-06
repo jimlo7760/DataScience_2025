@@ -1,0 +1,220 @@
+{
+    "@context": "http://schema.org/",
+    "@type": "Dataset",
+    "name": "US City Weather Data (2014-2024)",
+    "description": "Curated dataset of daily and monthly weather metrics (temperature, precipitation, rain, snow, weather code, degree days) for New York City, Los Angeles, and Seattle, based on Open-Meteo Archive API. Enables climate and energy analysis for major US cities.",
+    "creator": {
+        "@type": "Person",
+        "name": "Jim Lu",
+        "affiliation": "Energy & Climate Data Pipeline Project"
+    },
+    "temporalCoverage": "2014-01-01T00:00:00Z/2024-12-31T23:59:59Z",
+    "keywords": [
+        "weather",
+        "climate",
+        "temperature",
+        "precipitation",
+        "rain",
+        "snow",
+        "degree days",
+        "Open-Meteo",
+        "city",
+        "time series"
+    ],
+    "distribution": [
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./weather_monthly_by_city.json",
+            "encodingFormat": "application/json",
+            "description": "Monthly aggregated weather data for all cities"
+        },
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./weather_monthly_by_city.parquet",
+            "encodingFormat": "application/parquet",
+            "description": "Monthly aggregated weather data for all cities"
+        },
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./NYC/weather_daily_NYC.json",
+            "encodingFormat": "application/json",
+            "description": "Daily weather data for New York City"
+        },
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./LosAngeles/weather_daily_LosAngeles.json",
+            "encodingFormat": "application/json",
+            "description": "Daily weather data for Los Angeles"
+        },
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./Seattle/weather_daily_Seattle.json",
+            "encodingFormat": "application/json",
+            "description": "Daily weather data for Seattle"
+        }
+    ],
+    "processingHistory": {
+        "dateProcessed": "2025-10-05",
+        "methodology": "Automated Python pipeline using Open-Meteo Archive API for querying daily weather metrics. Data fetched via REST API, parsed from JSON, and aggregated to monthly and city level.",
+        "dataSource": "Open-Meteo Archive API",
+        "apiVersion": "v1",
+        "temporalResolution": "Daily, Monthly"
+    },
+    "coveredAreas": [
+        {
+            "regionName": "New York City",
+            "spatialCoverage": {
+                "@type": "GeoShape",
+                "name": "New York City, New York, United States",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "NY",
+                    "addressCountry": "US"
+                }
+            },
+            "dataSources": [
+                {
+                    "sourceName": "Open-Meteo Archive API",
+                    "API_Endpoint": "https://archive-api.open-meteo.com/v1/archive",
+                    "variableDescription": "Daily weather metrics (temperature, precipitation, rain, snow, weather code)"
+                }
+            ],
+            "dataFilename": "NYC/weather_daily_NYC.json"
+        },
+        {
+            "regionName": "Los Angeles",
+            "spatialCoverage": {
+                "@type": "GeoShape",
+                "name": "Los Angeles, California, United States",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "CA",
+                    "addressCountry": "US"
+                }
+            },
+            "dataSources": [
+                {
+                    "sourceName": "Open-Meteo Archive API",
+                    "API_Endpoint": "https://archive-api.open-meteo.com/v1/archive",
+                    "variableDescription": "Daily weather metrics (temperature, precipitation, rain, snow, weather code)"
+                }
+            ],
+            "dataFilename": "LosAngeles/weather_daily_LosAngeles.json"
+        },
+        {
+            "regionName": "Seattle",
+            "spatialCoverage": {
+                "@type": "GeoShape",
+                "name": "Seattle, Washington, United States",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "WA",
+                    "addressCountry": "US"
+                }
+            },
+            "dataSources": [
+                {
+                    "sourceName": "Open-Meteo Archive API",
+                    "API_Endpoint": "https://archive-api.open-meteo.com/v1/archive",
+                    "variableDescription": "Daily weather metrics (temperature, precipitation, rain, snow, weather code)"
+                }
+            ],
+            "dataFilename": "Seattle/weather_daily_Seattle.json"
+        }
+    ],
+    "dataStructure": {
+        "fileFormat": [
+            "JSON",
+            "Parquet"
+        ],
+        "columns": [
+            {
+                "name": "city",
+                "dataType": "string",
+                "description": "City name (NYC, LosAngeles, Seattle)"
+            },
+            {
+                "name": "date",
+                "dataType": "date",
+                "description": "Date (YYYY-MM-DD)"
+            },
+            {
+                "name": "tmax_c",
+                "dataType": "float",
+                "description": "Max temperature (°C)"
+            },
+            {
+                "name": "tmin_c",
+                "dataType": "float",
+                "description": "Min temperature (°C)"
+            },
+            {
+                "name": "tmean_c",
+                "dataType": "float",
+                "description": "Mean temperature (°C)"
+            },
+            {
+                "name": "tmax_f",
+                "dataType": "float",
+                "description": "Max temperature (°F)"
+            },
+            {
+                "name": "tmin_f",
+                "dataType": "float",
+                "description": "Min temperature (°F)"
+            },
+            {
+                "name": "tmean_f",
+                "dataType": "float",
+                "description": "Mean temperature (°F)"
+            },
+            {
+                "name": "precip_mm",
+                "dataType": "float",
+                "description": "Precipitation (mm)"
+            },
+            {
+                "name": "rain_mm",
+                "dataType": "float",
+                "description": "Rainfall (mm)"
+            },
+            {
+                "name": "snow_mm",
+                "dataType": "float",
+                "description": "Snowfall (mm)"
+            },
+            {
+                "name": "weather_code",
+                "dataType": "integer",
+                "description": "Weather code (Open-Meteo)"
+            },
+            {
+                "name": "hdd_base65F",
+                "dataType": "float",
+                "description": "Heating degree days (base 65°F)"
+            },
+            {
+                "name": "cdd_base65F",
+                "dataType": "float",
+                "description": "Cooling degree days (base 65°F)"
+            }
+        ]
+    },
+    "license": "Open-Meteo data is provided under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. See https://open-meteo.com/en/docs#terms for details.",
+    "citation": "Open-Meteo, Historical Weather Data API, 2014-2024, https://open-meteo.com/",
+    "relatedLinks": [
+        {
+            "name": "Open-Meteo API Documentation",
+            "url": "https://open-meteo.com/en/docs#archive"
+        },
+        {
+            "name": "Terms of Service & License",
+            "url": "https://open-meteo.com/en/docs#terms"
+        }
+    ],
+    "limitations": [
+        "Data is limited to selected cities (NYC, LosAngeles, Seattle)",
+        "Some days or variables may have missing data (recorded as 0 or null)",
+        "Open-Meteo data is based on reanalysis and may differ from local station observations"
+    ]
+}

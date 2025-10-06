@@ -1,0 +1,189 @@
+{
+    "@context": "http://schema.org/",
+    "@type": "Dataset",
+    "name": "US State and City Energy Resource Endowment (2014-2024)",
+    "description": "Curated dataset of monthly and annual electricity generation by resource type (hydro, solar, wind, coal, natural gas) for selected US states and cities, based on EIA Electric Power Operational Data API. Enables energy structure and resource analysis for CA, NY, WA and their major cities.",
+    "creator": {
+        "@type": "Person",
+        "name": "Xin Chao Chen",
+        "affiliation": "Energy & Climate Data Pipeline Project"
+    },
+    "temporalCoverage": "2014-01-01T00:00:00Z/2024-12-31T23:59:59Z",
+    "keywords": [
+        "energy",
+        "electricity",
+        "resource endowment",
+        "EIA",
+        "hydro",
+        "solar",
+        "wind",
+        "coal",
+        "natural gas",
+        "state",
+        "city",
+        "time series"
+    ],
+    "distribution": [
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./resource_endowment_by_state.json",
+            "encodingFormat": "application/json",
+            "description": "State-level energy resource endowment (monthly and annual MWh)"
+        },
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./resource_endowment_by_state.parquet",
+            "encodingFormat": "application/parquet",
+            "description": "State-level energy resource endowment (monthly and annual MWh)"
+        },
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./resource_endowment_by_city.json",
+            "encodingFormat": "application/json",
+            "description": "City-level energy resource endowment (monthly and annual MWh)"
+        },
+        {
+            "@type": "DataDownload",
+            "contentUrl": "./resource_endowment_by_city.parquet",
+            "encodingFormat": "application/parquet",
+            "description": "City-level energy resource endowment (monthly and annual MWh)"
+        }
+    ],
+    "processingHistory": {
+        "dateProcessed": "2025-10-05",
+        "methodology": "Automated Python pipeline using EIA v2 API (electric-power-operational-data) for querying monthly and annual electricity generation by resource type. Data fetched via REST API, parsed from JSON, and aggregated to state and city level.",
+        "dataSource": "U.S. Energy Information Administration (EIA) Electric Power Operational Data API",
+        "apiVersion": "v2",
+        "temporalResolution": "Monthly, Annual",
+        "estimateType": "Net Generation (MWh)"
+    },
+    "coveredAreas": [
+        {
+            "regionName": "California",
+            "spatialCoverage": {
+                "@type": "GeoShape",
+                "name": "California, United States",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "CA",
+                    "addressCountry": "US"
+                }
+            },
+            "dataSources": [
+                {
+                    "sourceName": "EIA Electric Power Operational Data API",
+                    "API_Endpoint": "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/",
+                    "fueltypeid": [
+                        "WAT",
+                        "SUN",
+                        "WND",
+                        "COL",
+                        "NG"
+                    ],
+                    "variableDescription": "Net Generation by Resource Type (MWh)"
+                }
+            ],
+            "dataFilename": "resource_endowment_by_state.json"
+        },
+        {
+            "regionName": "New York",
+            "spatialCoverage": {
+                "@type": "GeoShape",
+                "name": "New York, United States",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "NY",
+                    "addressCountry": "US"
+                }
+            },
+            "dataSources": [
+                {
+                    "sourceName": "EIA Electric Power Operational Data API",
+                    "API_Endpoint": "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/",
+                    "fueltypeid": [
+                        "WAT",
+                        "SUN",
+                        "WND",
+                        "COL",
+                        "NG"
+                    ],
+                    "variableDescription": "Net Generation by Resource Type (MWh)"
+                }
+            ],
+            "dataFilename": "resource_endowment_by_state.json"
+        },
+        {
+            "regionName": "Washington",
+            "spatialCoverage": {
+                "@type": "GeoShape",
+                "name": "Washington, United States",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressRegion": "WA",
+                    "addressCountry": "US"
+                }
+            },
+            "dataSources": [
+                {
+                    "sourceName": "EIA Electric Power Operational Data API",
+                    "API_Endpoint": "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/",
+                    "fueltypeid": [
+                        "WAT",
+                        "SUN",
+                        "WND",
+                        "COL",
+                        "NG"
+                    ],
+                    "variableDescription": "Net Generation by Resource Type (MWh)"
+                }
+            ],
+            "dataFilename": "resource_endowment_by_state.json"
+        }
+    ],
+    "dataStructure": {
+        "fileFormat": [
+            "JSON",
+            "Parquet"
+        ],
+        "columns": [
+            {
+                "name": "state",
+                "dataType": "string",
+                "description": "State abbreviation (CA, NY, WA)"
+            },
+            {
+                "name": "city",
+                "dataType": "string",
+                "description": "City name (if applicable)"
+            },
+            {
+                "name": "resource_totals_mwh",
+                "dataType": "object",
+                "description": "Annual total generation by resource type (MWh)"
+            },
+            {
+                "name": "monthly_resource_report",
+                "dataType": "array",
+                "description": "Monthly breakdown by resource type (MWh)"
+            }
+        ]
+    },
+    "license": "U.S. Government Work - Public Domain",
+    "citation": "U.S. Energy Information Administration (EIA), Electric Power Operational Data, 2014-2024",
+    "relatedLinks": [
+        {
+            "name": "EIA API Documentation",
+            "url": "https://www.eia.gov/opendata/browser/electricity/electric-power-operational-data"
+        },
+        {
+            "name": "API Key Registration",
+            "url": "https://www.eia.gov/opendata/register.php"
+        }
+    ],
+    "limitations": [
+        "Data is limited to selected states and cities (CA, NY, WA, LosAngeles, NYC, Seattle)",
+        "Net generation values may be revised by EIA after initial release",
+        "Some months or fuels may have missing data (recorded as 0 or null)",
+        "Data is for electric power sector only, not total primary energy production"
+    ]
+}
