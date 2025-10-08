@@ -5,9 +5,9 @@ from scipy import stats
 
 # Read the CSV files
 # Education data
-la_edu = pd.read_csv('data/raw/LA_education_2014_2023.csv')
-nyc_edu = pd.read_csv('data/raw/NYC_education_2014_2023.csv')
-seattle_edu = pd.read_csv('data/raw/Seattle_education_2014_2023.csv')
+la_edu = pd.read_csv('data/curated/LA_education_2014_2023.csv')
+nyc_edu = pd.read_csv('data/curated/NYC_education_2014_2023.csv')
+seattle_edu = pd.read_csv('data/curated/Seattle_education_2014_2023.csv')
 
 # Energy consumption data
 la_energy = pd.read_csv('data/raw/LA_energy_2014_2023.csv')
