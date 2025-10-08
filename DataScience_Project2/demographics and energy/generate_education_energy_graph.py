@@ -5,14 +5,14 @@ from scipy import stats
 
 # Read the CSV files
 # Education data
-la_edu = pd.read_csv('LA_education_2014_2023.csv')
-nyc_edu = pd.read_csv('NYC_education_2014_2023.csv')
-seattle_edu = pd.read_csv('Seattle_education_2014_2023.csv')
+la_edu = pd.read_csv('data/raw/LA_education_2014_2023.csv')
+nyc_edu = pd.read_csv('data/raw/NYC_education_2014_2023.csv')
+seattle_edu = pd.read_csv('data/raw/Seattle_education_2014_2023.csv')
 
 # Energy consumption data
-la_energy = pd.read_csv('LA_energy_2014_2023.csv')
-nyc_energy = pd.read_csv('NYC_energy_2014_2023.csv')
-seattle_energy = pd.read_csv('Seattle_energy_2014_2023.csv')
+la_energy = pd.read_csv('data/raw/LA_energy_2014_2023.csv')
+nyc_energy = pd.read_csv('data/raw/NYC_energy_2014_2023.csv')
+seattle_energy = pd.read_csv('data/raw/Seattle_energy_2014_2023.csv')
 
 
 def merge_city_data(edu_df, energy_df, city_name):
@@ -116,9 +116,9 @@ def create_city_plot(city_data, city_name, filename):
 
 # Create individual plots for each city
 print("\nCreating individual city plots...")
-create_city_plot(la_data, 'Los Angeles', 'la_energy_education.png')
-create_city_plot(nyc_data, 'New York City', 'nyc_energy_education.png')
-create_city_plot(seattle_data, 'Seattle', 'seattle_energy_education.png')
+create_city_plot(la_data, 'Los Angeles', 'data/curated/la_energy_education.png')
+create_city_plot(nyc_data, 'New York City', 'data/curated/nyc_energy_education.png')
+create_city_plot(seattle_data, 'Seattle', 'data/curated/seattle_energy_education.png')
 print("\nAll individual city plots created successfully!")
 
 
