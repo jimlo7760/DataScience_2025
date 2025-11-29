@@ -1,0 +1,333 @@
+{
+  "@context": "http://schema.org/",
+  "@type": "Dataset",
+  "name": "MultiCity_Population_Energy_Education_Dataset",
+  "description": "Combined dataset for analyzing demographic trends, educational attainment, and energy consumption patterns across three major U.S. cities. Includes population estimates from Census Bureau American Community Survey 1-Year Estimates, educational attainment from ACS 5-Year Estimates, and electricity sales data from EIA State Energy Data System.",
+  "creator": {
+    "@type": "Person",
+    "name": "Jim Lu",
+    "affiliation": "Energy Consumption Analysis Project"
+  },
+  "temporalCoverage": "2014-01-01T00:00:00Z/2023-12-31T23:59:59Z",
+  "keywords": ["population", "census", "demographics", "urban", "ACS", "multi-city", "time series", "energy consumption", "electricity", "EIA", "retail sales", "education", "educational attainment", "education level"],
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./nyc_population_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "New York City population data"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./la_population_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "Los Angeles population data"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./seattle_population_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "Seattle population data"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./NYC_energy_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "New York state electricity sales data (all sectors combined)"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./LA_energy_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "California state electricity sales data (all sectors combined)"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./Seattle_energy_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "Washington state electricity sales data (all sectors combined)"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./NYC_education_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "New York City educational attainment data (weighted average education level in years)"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./LA_education_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "Los Angeles educational attainment data (weighted average education level in years)"
+    },
+    {
+      "@type": "DataDownload",
+      "contentUrl": "./Seattle_education_2014_2023.csv",
+      "encodingFormat": "text/csv",
+      "description": "Seattle educational attainment data (weighted average education level in years)"
+    }
+  ],
+  "processingHistory": {
+    "dateProcessed": "2025-10-05",
+    "methodology": "Automated Python scripts using U.S. Census Bureau API for population and education data, and EIA API for energy consumption data. Population data fetched via Census Data API querying American Community Survey (ACS) 1-Year Estimates. Education data fetched via Census Data API querying ACS 5-Year Estimates (Table B15003 - Educational Attainment). Educational attainment calculated as weighted average education level in equivalent years of schooling. Energy data fetched via EIA State Energy Data System API querying electricity retail sales by state. All data parsed from JSON responses and saved to individual CSV files per city.",
+    "dataSource": "American Community Survey (ACS) 1-Year Estimates (population); American Community Survey (ACS) 5-Year Estimates (education); EIA State Energy Data System (SEDS)",
+    "apiVersion": "Census Data API; EIA API v2",
+    "temporalResolution": "Annual",
+    "estimateType": "ACS 1-Year Population Estimates; ACS 5-Year Educational Attainment Estimates; Annual Electricity Retail Sales"
+  },
+  "coveredAreas": [
+    {
+      "regionName": "New York City",
+      "spatialCoverage": {
+        "@type": "GeoShape",
+        "name": "New York City, New York",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "NY",
+          "addressCountry": "US"
+        }
+      },
+      "geographicIdentifiers": {
+        "stateFIPS": "36",
+        "placeFIPS": "51000",
+        "combinedFIPS": "3651000",
+        "stateCode": "NY"
+      },
+      "dataSources": [
+        {
+          "sourceName": "U.S. Census Bureau ACS 1-Year Estimates",
+          "API_Endpoint": "https://api.census.gov/data/{year}/acs/acs1",
+          "variable": "B01003_001E",
+          "variableDescription": "Total Population"
+        },
+        {
+          "sourceName": "U.S. Census Bureau ACS 5-Year Estimates",
+          "API_Endpoint": "https://api.census.gov/data/{year}/acs/acs5",
+          "table": "B15003",
+          "variables": ["B15003_017E through B15003_025E", "B15003_001E"],
+          "variableDescription": "Educational Attainment for the Population 25 Years and Over (High school through Doctorate degree)",
+          "calculationMethod": "Weighted average of education levels using equivalent years of schooling (12-21 years)"
+        },
+        {
+          "sourceName": "EIA State Energy Data System - Electricity Retail Sales",
+          "API_Endpoint": "https://api.eia.gov/v2/electricity/retail-sales/data/",
+          "variable": "sales",
+          "variableDescription": "Electricity sales (million kilowatt hours)",
+          "sectors": ["residential", "commercial", "industrial", "transportation", "other", "all sectors"]
+        }
+      ],
+      "dataFilenames": {
+        "population": "nyc_population_2014_2023.csv",
+        "energy": "NYC_energy_2014_2023.csv",
+        "education": "NYC_education_2014_2023.csv"
+      }
+    },
+    {
+      "regionName": "Los Angeles",
+      "spatialCoverage": {
+        "@type": "GeoShape",
+        "name": "Los Angeles, California",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      },
+      "geographicIdentifiers": {
+        "stateFIPS": "06",
+        "placeFIPS": "44000",
+        "combinedFIPS": "0644000",
+        "stateCode": "CA"
+      },
+      "dataSources": [
+        {
+          "sourceName": "U.S. Census Bureau ACS 1-Year Estimates",
+          "API_Endpoint": "https://api.census.gov/data/{year}/acs/acs1",
+          "variable": "B01003_001E",
+          "variableDescription": "Total Population"
+        },
+        {
+          "sourceName": "U.S. Census Bureau ACS 5-Year Estimates",
+          "API_Endpoint": "https://api.census.gov/data/{year}/acs/acs5",
+          "table": "B15003",
+          "variables": ["B15003_017E through B15003_025E", "B15003_001E"],
+          "variableDescription": "Educational Attainment for the Population 25 Years and Over (High school through Doctorate degree)",
+          "calculationMethod": "Weighted average of education levels using equivalent years of schooling (12-21 years)"
+        },
+        {
+          "sourceName": "EIA State Energy Data System - Electricity Retail Sales",
+          "API_Endpoint": "https://api.eia.gov/v2/electricity/retail-sales/data/",
+          "variable": "sales",
+          "variableDescription": "Electricity sales (million kilowatt hours)",
+          "sectors": ["residential", "commercial", "industrial", "transportation", "other", "all sectors"]
+        }
+      ],
+      "dataFilenames": {
+        "population": "la_population_2014_2023.csv",
+        "energy": "LA_energy_2014_2023.csv",
+        "education": "LA_education_2014_2023.csv"
+      }
+    },
+    {
+      "regionName": "Seattle",
+      "spatialCoverage": {
+        "@type": "GeoShape",
+        "name": "Seattle, Washington",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "WA",
+          "addressCountry": "US"
+        }
+      },
+      "geographicIdentifiers": {
+        "stateFIPS": "53",
+        "placeFIPS": "63000",
+        "combinedFIPS": "5363000",
+        "stateCode": "WA"
+      },
+      "dataSources": [
+        {
+          "sourceName": "U.S. Census Bureau ACS 1-Year Estimates",
+          "API_Endpoint": "https://api.census.gov/data/{year}/acs/acs1",
+          "variable": "B01003_001E",
+          "variableDescription": "Total Population"
+        },
+        {
+          "sourceName": "U.S. Census Bureau ACS 5-Year Estimates",
+          "API_Endpoint": "https://api.census.gov/data/{year}/acs/acs5",
+          "table": "B15003",
+          "variables": ["B15003_017E through B15003_025E", "B15003_001E"],
+          "variableDescription": "Educational Attainment for the Population 25 Years and Over (High school through Doctorate degree)",
+          "calculationMethod": "Weighted average of education levels using equivalent years of schooling (12-21 years)"
+        },
+        {
+          "sourceName": "EIA State Energy Data System - Electricity Retail Sales",
+          "API_Endpoint": "https://api.eia.gov/v2/electricity/retail-sales/data/",
+          "variable": "sales",
+          "variableDescription": "Electricity sales (million kilowatt hours)",
+          "sectors": ["residential", "commercial", "industrial", "transportation", "other", "all sectors"]
+        }
+      ],
+      "dataFilenames": {
+        "population": "seattle_population_2014_2023.csv",
+        "energy": "Seattle_energy_2014_2023.csv",
+        "education": "Seattle_education_2014_2023.csv"
+      }
+    }
+  ],
+  "dataStructure": {
+    "populationFiles": {
+      "fileFormat": "CSV",
+      "columns": [
+        {
+          "name": "Year",
+          "dataType": "integer",
+          "description": "Calendar year of population estimate"
+        },
+        {
+          "name": "Population",
+          "dataType": "integer",
+          "description": "Total population estimate for the city"
+        },
+        {
+          "name": "City",
+          "dataType": "string",
+          "description": "City name (New York City, Los Angeles, or Seattle)"
+        }
+      ]
+    },
+    "energyFiles": {
+      "fileFormat": "CSV",
+      "columns": [
+        {
+          "name": "Year",
+          "dataType": "integer",
+          "description": "Calendar year of energy consumption data"
+        },
+        {
+          "name": "Consumption",
+          "dataType": "float",
+          "description": "Total electricity sales/consumption (million kilowatt hours) - all sectors combined",
+          "unit": "million kilowatt hours"
+        },
+        {
+          "name": "City",
+          "dataType": "string",
+          "description": "City name (New York City, Los Angeles, or Seattle)"
+        }
+      ]
+    },
+    "educationFiles": {
+      "fileFormat": "CSV",
+      "columns": [
+        {
+          "name": "Year",
+          "dataType": "integer",
+          "description": "Calendar year of education estimate"
+        },
+        {
+          "name": "Education level",
+          "dataType": "float",
+          "description": "Weighted average educational attainment in equivalent years of schooling for population 25 years and over",
+          "unit": "years",
+          "range": "12-21 years (12=high school graduate, 16=bachelor's degree, 21=doctorate)",
+          "calculationNote": "Calculated from ACS Table B15003 variables using weighted average by population count at each education level"
+        },
+        {
+          "name": "City",
+          "dataType": "string",
+          "description": "City name (New York, Los Angeles, or Seattle)"
+        }
+      ]
+    }
+  },
+  "license": "Public Domain - U.S. Government Work",
+  "citation": "U.S. Census Bureau, American Community Survey 1-Year Estimates, 2014-2023 (population); U.S. Census Bureau, American Community Survey 5-Year Estimates, 2014-2023 (education); U.S. Energy Information Administration, State Energy Data System, 2014-2023",
+  "relatedLinks": [
+    {
+      "name": "Census Data API Documentation",
+      "url": "https://www.census.gov/data/developers/data-sets/acs-1year.html"
+    },
+    {
+      "name": "ACS 5-Year Estimates Documentation",
+      "url": "https://www.census.gov/data/developers/data-sets/acs-5year.html"
+    },
+    {
+      "name": "Census API Key Registration",
+      "url": "https://api.census.gov/data/key_signup.html"
+    },
+    {
+      "name": "ACS 1-Year Estimates Overview",
+      "url": "https://www.census.gov/programs-surveys/acs/technical-documentation/table-and-geography-changes/2023/1-year.html"
+    },
+    {
+      "name": "ACS Table B15003 - Educational Attainment",
+      "url": "https://data.census.gov/table?q=B15003"
+    },
+    {
+      "name": "EIA API Documentation",
+      "url": "https://www.eia.gov/opendata/"
+    },
+    {
+      "name": "EIA API Key Registration",
+      "url": "https://www.eia.gov/opendata/register.php"
+    },
+    {
+      "name": "EIA Electricity Data Browser",
+      "url": "https://www.eia.gov/electricity/data/browser/"
+    }
+  ],
+  "limitations": [
+    "ACS 1-Year Estimates have margins of error that should be considered for statistical analysis",
+    "ACS 5-Year Estimates represent rolling 5-year averages and have ~1 year release lag",
+    "Data for the most recent year (2023) may not be available until released by Census Bureau",
+    "ACS 1-Year Estimates are only available for areas with populations of 65,000 or more",
+    "Annual estimates may not be directly comparable across years due to methodology changes",
+    "Energy consumption data represents state-level totals rather than city-specific consumption",
+    "Energy data temporal coverage ends at 2023; 2023 data not yet available from EIA",
+    "Electricity sales data may not capture all energy consumption (excludes natural gas, heating oil, etc.)",
+    "State-level energy data serves as proxy for city-level consumption patterns",
+    "Education data uses simplified weighting scheme (12-21 years) which may not capture full complexity of educational attainment",
+    "Education level is calculated as weighted average and may not reflect distribution of education levels within each city",
+    "2024 ACS 5-Year data (2020-2024 period) not yet released as of October 2025"
+  ]
+}

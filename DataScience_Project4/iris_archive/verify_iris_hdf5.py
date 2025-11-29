@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Verify Iris HDF5 File
-Checks the integrity and structure of the iris_dataset.h5 file
+Checks the integrity and structure of the iris_archive.h5 file
 """
 
 import h5py
@@ -203,7 +203,7 @@ def verify_hdf5_file(filepath):
 
 def main():
     """Main execution function."""
-    filepath = Path('outputs/iris_dataset.h5')
+    filepath = Path('../outputs/iris_dataset.h5')
 
     if not filepath.exists():
         print(f"Error: File not found at {filepath}")

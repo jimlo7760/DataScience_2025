@@ -326,7 +326,7 @@ def print_hdf5_structure(filepath):
 def main():
     """Main execution function."""
     # Define paths
-    data_dir = Path('../DataScience_Project2/demographics and energy/')
+    data_dir = Path('demographics and energy')
     output_path = Path('outputs/multicity_demographic_energy_dataset.h5')
 
     # Create output directory if it doesn't exist
