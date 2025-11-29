@@ -1,0 +1,53 @@
+{
+  "dataset_information": {
+    "title": null,
+    "creator": "Jim Lu",
+    "donor": null,
+    "date": null,
+    "description": "Combined dataset for analyzing demographic trends, educational attainment, and energy consumption patterns across three major U.S. cities. Includes population estimates from Census Bureau American Community Survey 1-Year Estimates, educational attainment from ACS 5-Year Estimates, and electricity sales data from EIA State Energy Data System.",
+    "num_instances": null,
+    "num_attributes": null,
+    "num_classes": null,
+    "instances_per_class": null,
+    "attribute_names": null,
+    "class_names": null,
+    "missing_values": null,
+    "class_distribution": null
+  },
+  "data_quality": {
+    "note_sample_35": null,
+    "note_sample_38": null
+  },
+  "archival_information": {
+    "doi": "10.24432/C56C76",
+    "archive_date": "2025-11-29",
+    "depositor": "Jim Lu",
+    "depositor_affiliation": "Rensselaer Polytechnic Institute",
+    "depositor_email": "jimlo7760@gmail.com",
+    "license": "CC0 1.0 Universal (Public Domain)",
+    "recommended_citation": "Fisher, R.A. (1936). Iris Plants Database. UCI Machine Learning Repository. https://doi.org/10.24432/C56C76"
+  },
+  "keywords": [
+    "iris",
+    "classification",
+    "machine learning",
+    "pattern recognition",
+    "Fisher"
+  ],
+  "file_information": {
+    "filename": "multicity_demographic_energy_dataset.h5",
+    "format": "HDF5",
+    "size_kb": 7.67,
+    "compression": "gzip level 9",
+    "md5_checksum": "af72a7f8953880c5901f149bb461bfec",
+    "sha256_checksum": "4650291f9ec75decc9ad26cc3089fe74cf4e73e77ecb2ead0f753a37fbe5888c"
+  },
+  "hdf5_structure": {
+    "groups": [
+      "original_data - from iris.data",
+      "corrected_data - from bezdekIris.data",
+      "summary_statistics - computed statistics",
+      "by_class - data organized by species"
+    ]
+  }
+}

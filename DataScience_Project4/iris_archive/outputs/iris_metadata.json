@@ -1,0 +1,62 @@
+{
+  "dataset_information": {
+    "title": "Iris Plants Database",
+    "creator": "R.A. Fisher",
+    "donor": "Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)",
+    "date": "July, 1988",
+    "description": "This is perhaps the best known database to be found in the pattern recognition literature.",
+    "num_instances": 150,
+    "num_attributes": 4,
+    "num_classes": 3,
+    "instances_per_class": 50,
+    "attribute_names": [
+      "sepal length in cm",
+      "sepal width in cm",
+      "petal length in cm",
+      "petal width in cm"
+    ],
+    "class_names": [
+      "Iris-setosa",
+      "Iris-versicolor",
+      "Iris-virginica"
+    ],
+    "missing_values": "None",
+    "class_distribution": "33.3% for each of 3 classes"
+  },
+  "data_quality": {
+    "note_sample_35": null,
+    "note_sample_38": null
+  },
+  "archival_information": {
+    "doi": "10.24432/C56C76",
+    "archive_date": "2025-11-29",
+    "depositor": "Jim Lu",
+    "depositor_affiliation": "Rensselaer Polytechnic Institute",
+    "depositor_email": "jimlo7760@gmail.com",
+    "license": "CC0 1.0 Universal (Public Domain)",
+    "recommended_citation": "Fisher, R.A. (1936). Iris Plants Database. UCI Machine Learning Repository. https://doi.org/10.24432/C56C76"
+  },
+  "keywords": [
+    "iris",
+    "classification",
+    "machine learning",
+    "pattern recognition",
+    "Fisher"
+  ],
+  "file_information": {
+    "filename": "iris_dataset.h5",
+    "format": "HDF5",
+    "size_kb": 38.59,
+    "compression": "gzip level 9",
+    "md5_checksum": "3cbe462d9e6792f4a534386653eba335",
+    "sha256_checksum": "ca7b5faabfd0f8ea5cd3c8be074655308eb81e7070cc664933d9ddc8b4e00c23"
+  },
+  "hdf5_structure": {
+    "groups": [
+      "original_data - from iris.data",
+      "corrected_data - from bezdekIris.data",
+      "summary_statistics - computed statistics",
+      "by_class - data organized by species"
+    ]
+  }
+}

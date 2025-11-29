@@ -122,21 +122,15 @@ def generate_metadata_json(hdf5_path, output_path):
 
 
 def main():
-    multi_city_hdf5_path = Path('outputs/multicity_demographic_energy_dataset.h5')
-    multi_city_metadata_path = Path('outputs/.json')
 
     iris_hdf5_path = Path('outputs/iris_dataset.h5')
     iris_metadata_path = Path('outputs/iris_metadata.json')
 
-    if not multi_city_hdf5_path.exists():
-        print(f"Error: {multi_city_hdf5_path} not found.")
-        return
 
     if not iris_hdf5_path.exists():
         print(f"Error: {iris_hdf5_path} not found.")
         return
 
-    generate_metadata_json(multi_city_hdf5_path, multi_city_metadata_path)
     generate_metadata_json(iris_hdf5_path, iris_metadata_path)
 
 

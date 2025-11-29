@@ -273,8 +273,7 @@ def main():
     
     # Print structure
     print_hdf5_structure(output_path)
-    
-    print(f"\n✓ Conversion complete!")
+
     print(f"  Output file: {output_path}")
     print(f"  File size: {output_path.stat().st_size / 1024:.2f} KB")
 
