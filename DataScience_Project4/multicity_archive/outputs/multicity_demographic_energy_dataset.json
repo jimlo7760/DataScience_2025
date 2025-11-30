@@ -1,53 +1,178 @@
 {
   "dataset_information": {
-    "title": null,
+    "title": "MultiCity_Population_Energy_Education_Dataset",
     "creator": "Jim Lu",
-    "donor": null,
-    "date": null,
+    "creator_affiliation": "Energy Consumption Analysis Project",
+    "date_created": "2025-11-29",
     "description": "Combined dataset for analyzing demographic trends, educational attainment, and energy consumption patterns across three major U.S. cities. Includes population estimates from Census Bureau American Community Survey 1-Year Estimates, educational attainment from ACS 5-Year Estimates, and electricity sales data from EIA State Energy Data System.",
-    "num_instances": null,
-    "num_attributes": null,
-    "num_classes": null,
-    "instances_per_class": null,
-    "attribute_names": null,
-    "class_names": null,
-    "missing_values": null,
-    "class_distribution": null
+    "temporal_coverage": "2014-01-01T00:00:00Z/2023-12-31T23:59:59Z",
+    "cities_covered": [],
+    "num_cities": 0,
+    "data_types": [
+      "Population (Census ACS 1-Year Estimates)",
+      "Energy Consumption (EIA State Energy Data System)",
+      "Educational Attainment (Census ACS 5-Year Estimates)"
+    ]
+  },
+  "data_sources": {
+    "population": {
+      "source": "U.S. Census Bureau American Community Survey (ACS) 1-Year Estimates",
+      "variables": "B01003_001E (Total Population)",
+      "api_endpoint": "https://api.census.gov/data/{year}/acs/acs1",
+      "temporal_resolution": "Annual",
+      "years_covered": "2014-2023"
+    },
+    "energy_consumption": {
+      "source": "U.S. Energy Information Administration (EIA) State Energy Data System",
+      "variables": "Electricity retail sales (all sectors combined)",
+      "api_endpoint": "https://api.eia.gov/v2/electricity/retail-sales/data/",
+      "temporal_resolution": "Annual",
+      "years_covered": "2014-2023",
+      "units": "Million kilowatt hours (GWh)"
+    },
+    "education": {
+      "source": "U.S. Census Bureau American Community Survey (ACS) 5-Year Estimates",
+      "table": "B15003 - Educational Attainment for the Population 25 Years and Over",
+      "api_endpoint": "https://api.census.gov/data/{year}/acs/acs5",
+      "temporal_resolution": "Annual (5-year rolling averages)",
+      "years_covered": "2014-2023",
+      "calculation_method": "Weighted average of education levels using equivalent years of schooling (12-21 years)",
+      "units": "Years of education"
+    }
+  },
+  "geographic_coverage": {
+    "NYC": {
+      "city_name": "New York City",
+      "state": "New York",
+      "state_code": "NY",
+      "state_fips": "36",
+      "place_fips": "51000"
+    },
+    "LA": {
+      "city_name": "Los Angeles",
+      "state": "California",
+      "state_code": "CA",
+      "state_fips": "06",
+      "place_fips": "44000"
+    },
+    "Seattle": {
+      "city_name": "Seattle",
+      "state": "Washington",
+      "state_code": "WA",
+      "state_fips": "53",
+      "place_fips": "63000"
+    }
   },
   "data_quality": {
-    "note_sample_35": null,
-    "note_sample_38": null
+    "limitations": [
+      "ACS 1-Year Estimates have margins of error that should be considered",
+      "ACS 5-Year Estimates represent rolling 5-year averages",
+      "Energy data represents state-level totals, not city-specific consumption",
+      "Education data uses simplified weighting scheme (12-21 years)",
+      "2020 population data missing due to COVID-19 impacts on ACS data collection"
+    ],
+    "quality_notes": "All data retrieved from authoritative government sources (U.S. Census Bureau, EIA). Data processing scripts included in archive."
   },
   "archival_information": {
-    "doi": "10.24432/C56C76",
     "archive_date": "2025-11-29",
     "depositor": "Jim Lu",
     "depositor_affiliation": "Rensselaer Polytechnic Institute",
     "depositor_email": "jimlo7760@gmail.com",
-    "license": "CC0 1.0 Universal (Public Domain)",
-    "recommended_citation": "Fisher, R.A. (1936). Iris Plants Database. UCI Machine Learning Repository. https://doi.org/10.24432/C56C76"
+    "license": "CC0 1.0 Universal (Public Domain) - Original government data is public domain",
+    "recommended_citation": "Lu, Jim (2025). Multi-City Demographic and Energy Dataset (2014-2023). Dataset compiled from U.S. Census Bureau ACS and EIA State Energy Data System.",
+    "purpose": "Academic research on relationships between demographics, education, and energy consumption in major U.S. cities"
   },
   "keywords": [
-    "iris",
-    "classification",
-    "machine learning",
-    "pattern recognition",
-    "Fisher"
+    "population",
+    "demographics",
+    "energy consumption",
+    "electricity",
+    "education",
+    "educational attainment",
+    "urban data",
+    "time series",
+    "New York City",
+    "Los Angeles",
+    "Seattle",
+    "Census",
+    "ACS",
+    "EIA",
+    "multi-city analysis"
   ],
   "file_information": {
     "filename": "multicity_demographic_energy_dataset.h5",
     "format": "HDF5",
+    "format_version": "HDF5 1.10+",
     "size_kb": 7.67,
     "compression": "gzip level 9",
     "md5_checksum": "af72a7f8953880c5901f149bb461bfec",
-    "sha256_checksum": "4650291f9ec75decc9ad26cc3089fe74cf4e73e77ecb2ead0f753a37fbe5888c"
+    "sha256_checksum": "4650291f9ec75decc9ad26cc3089fe74cf4e73e77ecb2ead0f753a37fbe5888c",
+    "created_with": "Python 3.10, h5py, pandas, numpy"
   },
   "hdf5_structure": {
-    "groups": [
-      "original_data - from iris.data",
-      "corrected_data - from bezdekIris.data",
-      "summary_statistics - computed statistics",
-      "by_class - data organized by species"
+    "description": "Hierarchical organization by city, then by data type",
+    "root_level": {
+      "groups": [
+        "NYC",
+        "LA",
+        "Seattle",
+        "summary_statistics"
+      ],
+      "attributes": [
+        "dataset_name",
+        "description",
+        "creator",
+        "temporal_coverage",
+        "license",
+        "citation",
+        "keywords"
+      ]
+    },
+    "city_level_groups": {
+      "description": "Each city has groups for different data types",
+      "subgroups": [
+        "population - Annual population estimates",
+        "energy_consumption - Annual electricity consumption",
+        "education_level - Weighted average years of education",
+        "education_detailed - Breakdown by education category",
+        "integrated_timeseries - Combined data for correlation analysis"
+      ]
+    },
+    "dataset_attributes": {
+      "description": "Each dataset includes metadata as HDF5 attributes",
+      "common_attributes": [
+        "source - Data source name",
+        "units - Measurement units",
+        "variable - Variable description"
+      ]
+    }
+  },
+  "related_resources": {
+    "census_api": "https://www.census.gov/data/developers/data-sets.html",
+    "eia_api": "https://www.eia.gov/opendata/",
+    "census_acs_documentation": "https://www.census.gov/programs-surveys/acs/technical-documentation.html",
+    "eia_seds_documentation": "https://www.eia.gov/state/seds/"
+  },
+  "processing_history": {
+    "conversion_date": "2025-11-29",
+    "conversion_tool": "Python 3.10 with h5py library",
+    "original_formats": [
+      "CSV files from API requests"
+    ],
+    "processing_steps": [
+      "1. Retrieved raw data from Census and EIA APIs using Python scripts",
+      "2. Processed and cleaned data using pandas",
+      "3. Calculated derived metrics (weighted education averages)",
+      "4. Organized data hierarchically by city and data type",
+      "5. Converted to HDF5 with metadata preservation",
+      "6. Applied gzip compression level 9",
+      "7. Generated integrated time series for analysis"
+    ],
+    "scripts_included": [
+      "convert_multicity_to_hdf5.py - Main conversion script",
+      "get_population.py - Population data retrieval",
+      "get_energy.py - Energy data retrieval",
+      "get_education.py - Education data retrieval"
     ]
   }
 }
