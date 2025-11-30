@@ -3,7 +3,7 @@
     "title": "MultiCity_Population_Energy_Education_Dataset",
     "creator": "Jim Lu",
     "creator_affiliation": "Energy Consumption Analysis Project",
-    "date_created": "2025-11-29",
+    "date_created": "2025-11-30",
     "description": "Combined dataset for analyzing demographic trends, educational attainment, and energy consumption patterns across three major U.S. cities. Includes population estimates from Census Bureau American Community Survey 1-Year Estimates, educational attainment from ACS 5-Year Estimates, and electricity sales data from EIA State Energy Data System.",
     "temporal_coverage": "2014-01-01T00:00:00Z/2023-12-31T23:59:59Z",
     "cities_covered": [],
@@ -74,7 +74,7 @@
     "quality_notes": "All data retrieved from authoritative government sources (U.S. Census Bureau, EIA). Data processing scripts included in archive."
   },
   "archival_information": {
-    "archive_date": "2025-11-29",
+    "archive_date": "2025-11-30",
     "depositor": "Jim Lu",
     "depositor_affiliation": "Rensselaer Polytechnic Institute",
     "depositor_email": "jimlo7760@gmail.com",
@@ -154,7 +154,7 @@
     "eia_seds_documentation": "https://www.eia.gov/state/seds/"
   },
   "processing_history": {
-    "conversion_date": "2025-11-29",
+    "conversion_date": "2025-11-30",
     "conversion_tool": "Python 3.10 with h5py library",
     "original_formats": [
       "CSV files from API requests"

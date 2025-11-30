@@ -67,22 +67,22 @@ def load_city_data(data_dir, city_code):
     city_data = {}
 
     # Load population data
-    pop_file = data_dir / 'raw' / f'{city_code.lower()}_population_2014_2023.csv'
+    pop_file = data_dir / 'data' / 'raw' / f'{city_code.lower()}_population_2014_2023.csv'
     if pop_file.exists():
         city_data['population'] = pd.read_csv(pop_file)
 
     # Load energy data
-    energy_file = data_dir / 'raw' / f'{city_code}_energy_2014_2023.csv'
+    energy_file = data_dir / 'data' / 'raw' / f'{city_code}_energy_2014_2023.csv'
     if energy_file.exists():
         city_data['energy'] = pd.read_csv(energy_file)
 
     # Load education data (curated)
-    edu_file = data_dir / 'curated' / f'{city_code}_education_2014_2023.csv'
+    edu_file = data_dir / 'data' / 'curated' / f'{city_code}_education_2014_2023.csv'
     if edu_file.exists():
         city_data['education'] = pd.read_csv(edu_file)
 
     # Load raw education data
-    raw_edu_file = data_dir / 'raw' / f'{city_code}_raw_education_2014_2023.csv'
+    raw_edu_file = data_dir / 'data' / 'raw' / f'{city_code}_raw_education_2014_2023.csv'
     if raw_edu_file.exists():
         city_data['raw_education'] = pd.read_csv(raw_edu_file)
 
@@ -152,15 +152,20 @@ def create_hdf5_file(output_path, data_dir):
             # Add energy data
             if 'energy' in city_data:
                 energy_df = city_data['energy']
-                energy_group = city_group.create_group('energy_consumption')
-                energy_group.attrs['source'] = 'EIA State Energy Data System'
-                energy_group.attrs['variable'] = 'Electricity sales (all sectors)'
 
-                energy_group.create_dataset('year', data=energy_df['Year'].values,
-                                            dtype=np.int32, compression='gzip', compression_opts=9)
-                energy_dataset = energy_group.create_dataset('values', data=energy_df['Consumption'].values,
-                                                             dtype=np.float64, compression='gzip', compression_opts=9)
-                energy_dataset.attrs['units'] = 'million kilowatt hours'
+                energy_df = energy_df[energy_df['Year'] <= 2023].copy()
+
+                if len(energy_df) > 0:
+                    energy_group = city_group.create_group('energy_consumption')
+                    energy_group.attrs['source'] = 'EIA State Energy Data System'
+                    energy_group.attrs['variable'] = 'Electricity sales (all sectors)'
+
+                    energy_group.create_dataset('year', data=energy_df['Year'].values,
+                                                dtype=np.int32, compression='gzip', compression_opts=9)
+                    energy_dataset = energy_group.create_dataset('values', data=energy_df['Consumption'].values,
+                                                                 dtype=np.float64, compression='gzip',
+                                                                 compression_opts=9)
+                    energy_dataset.attrs['units'] = 'million kilowatt hours'
 
             # Add education data
             if 'education' in city_data:
