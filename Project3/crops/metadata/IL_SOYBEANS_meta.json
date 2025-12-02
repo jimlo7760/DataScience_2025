@@ -1,0 +1,207 @@
+{
+  "status": "OK",
+  "crop": "SOYBEANS",
+  "state": "IL",
+  "n_records": 128,
+  "years_available": [
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "year_period_combinations": [
+    [
+      2000,
+      ""
+    ],
+    [
+      2001,
+      ""
+    ],
+    [
+      2002,
+      ""
+    ],
+    [
+      2003,
+      ""
+    ],
+    [
+      2004,
+      ""
+    ],
+    [
+      2005,
+      ""
+    ],
+    [
+      2006,
+      ""
+    ],
+    [
+      2007,
+      ""
+    ],
+    [
+      2008,
+      ""
+    ],
+    [
+      2009,
+      ""
+    ],
+    [
+      2010,
+      ""
+    ],
+    [
+      2011,
+      ""
+    ],
+    [
+      2012,
+      ""
+    ],
+    [
+      2013,
+      ""
+    ],
+    [
+      2014,
+      ""
+    ],
+    [
+      2015,
+      ""
+    ],
+    [
+      2016,
+      ""
+    ],
+    [
+      2017,
+      ""
+    ],
+    [
+      2018,
+      ""
+    ],
+    [
+      2019,
+      ""
+    ],
+    [
+      2020,
+      ""
+    ],
+    [
+      2021,
+      ""
+    ],
+    [
+      2022,
+      ""
+    ],
+    [
+      2023,
+      ""
+    ],
+    [
+      2024,
+      ""
+    ],
+    [
+      2025,
+      ""
+    ]
+  ],
+  "months_detected": [],
+  "seasons_detected": [],
+  "marketing_year_descriptors": [
+    "YEAR",
+    "YEAR - AUG FORECAST",
+    "YEAR - NOV FORECAST",
+    "YEAR - OCT FORECAST",
+    "YEAR - SEP FORECAST"
+  ],
+  "first_year": 2000,
+  "last_year": 2025,
+  "value_stats": {
+    "count_valid": 128,
+    "min": 37.0,
+    "max": 67.0,
+    "mean": 52.09765625
+  },
+  "response_time_sec": 1.241,
+  "parameter_used": {
+    "source_desc": "SURVEY",
+    "agg_level_desc": "STATE",
+    "statisticcat_desc": "YIELD",
+    "year__GE": 2000,
+    "commodity_desc": "SOYBEANS",
+    "state_alpha": "IL"
+  },
+  "example_record_raw": {
+    "asd_desc": "",
+    "sector_desc": "CROPS",
+    "watershed_desc": "",
+    "prodn_practice_desc": "ALL PRODUCTION PRACTICES",
+    "group_desc": "FIELD CROPS",
+    "congr_district_code": "",
+    "asd_code": "",
+    "unit_desc": "BU / ACRE",
+    "country_code": "9000",
+    "class_desc": "ALL CLASSES",
+    "year": 2025,
+    "region_desc": "",
+    "agg_level_desc": "STATE",
+    "reference_period_desc": "YEAR",
+    "util_practice_desc": "ALL UTILIZATION PRACTICES",
+    "state_name": "ILLINOIS",
+    "state_ansi": "17",
+    "country_name": "UNITED STATES",
+    "county_code": "",
+    "county_name": "",
+    "statisticcat_desc": "YIELD",
+    "watershed_code": "00000000",
+    "domaincat_desc": "NOT SPECIFIED",
+    "short_desc": "SOYBEANS - YIELD, MEASURED IN BU / ACRE",
+    "source_desc": "SURVEY",
+    "load_time": "2025-11-14 12:00:00.000",
+    "zip_5": "",
+    "Value": "65",
+    "commodity_desc": "SOYBEANS",
+    "location_desc": "ILLINOIS",
+    "begin_code": "00",
+    "freq_desc": "ANNUAL",
+    "state_alpha": "IL",
+    "CV (%)": "",
+    "end_code": "00",
+    "week_ending": "",
+    "state_fips_code": "17",
+    "county_ansi": "",
+    "domain_desc": "TOTAL"
+  }
+}

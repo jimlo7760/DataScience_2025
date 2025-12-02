@@ -1,0 +1,207 @@
+{
+  "status": "OK",
+  "crop": "CORN",
+  "state": "IA",
+  "n_records": 153,
+  "years_available": [
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "year_period_combinations": [
+    [
+      2000,
+      ""
+    ],
+    [
+      2001,
+      ""
+    ],
+    [
+      2002,
+      ""
+    ],
+    [
+      2003,
+      ""
+    ],
+    [
+      2004,
+      ""
+    ],
+    [
+      2005,
+      ""
+    ],
+    [
+      2006,
+      ""
+    ],
+    [
+      2007,
+      ""
+    ],
+    [
+      2008,
+      ""
+    ],
+    [
+      2009,
+      ""
+    ],
+    [
+      2010,
+      ""
+    ],
+    [
+      2011,
+      ""
+    ],
+    [
+      2012,
+      ""
+    ],
+    [
+      2013,
+      ""
+    ],
+    [
+      2014,
+      ""
+    ],
+    [
+      2015,
+      ""
+    ],
+    [
+      2016,
+      ""
+    ],
+    [
+      2017,
+      ""
+    ],
+    [
+      2018,
+      ""
+    ],
+    [
+      2019,
+      ""
+    ],
+    [
+      2020,
+      ""
+    ],
+    [
+      2021,
+      ""
+    ],
+    [
+      2022,
+      ""
+    ],
+    [
+      2023,
+      ""
+    ],
+    [
+      2024,
+      ""
+    ],
+    [
+      2025,
+      ""
+    ]
+  ],
+  "months_detected": [],
+  "seasons_detected": [],
+  "marketing_year_descriptors": [
+    "YEAR",
+    "YEAR - AUG FORECAST",
+    "YEAR - NOV FORECAST",
+    "YEAR - OCT FORECAST",
+    "YEAR - SEP FORECAST"
+  ],
+  "first_year": 2000,
+  "last_year": 2025,
+  "value_stats": {
+    "count_valid": 153,
+    "min": 15.0,
+    "max": 222.0,
+    "mean": 153.48366013071896
+  },
+  "response_time_sec": 1.19,
+  "parameter_used": {
+    "source_desc": "SURVEY",
+    "agg_level_desc": "STATE",
+    "statisticcat_desc": "YIELD",
+    "year__GE": 2000,
+    "commodity_desc": "CORN",
+    "state_alpha": "IA"
+  },
+  "example_record_raw": {
+    "state_fips_code": "19",
+    "group_desc": "FIELD CROPS",
+    "domain_desc": "TOTAL",
+    "state_alpha": "IA",
+    "agg_level_desc": "STATE",
+    "state_name": "IOWA",
+    "asd_desc": "",
+    "short_desc": "CORN, GRAIN - YIELD, MEASURED IN BU / ACRE",
+    "domaincat_desc": "NOT SPECIFIED",
+    "asd_code": "",
+    "reference_period_desc": "YEAR",
+    "state_ansi": "19",
+    "county_ansi": "",
+    "load_time": "2025-11-14 12:00:00.000",
+    "begin_code": "00",
+    "county_name": "",
+    "unit_desc": "BU / ACRE",
+    "CV (%)": "",
+    "county_code": "",
+    "freq_desc": "ANNUAL",
+    "sector_desc": "CROPS",
+    "commodity_desc": "CORN",
+    "country_code": "9000",
+    "country_name": "UNITED STATES",
+    "region_desc": "",
+    "util_practice_desc": "GRAIN",
+    "class_desc": "ALL CLASSES",
+    "source_desc": "SURVEY",
+    "week_ending": "",
+    "year": 2025,
+    "Value": "216",
+    "congr_district_code": "",
+    "prodn_practice_desc": "ALL PRODUCTION PRACTICES",
+    "zip_5": "",
+    "location_desc": "IOWA",
+    "watershed_code": "00000000",
+    "statisticcat_desc": "YIELD",
+    "end_code": "00",
+    "watershed_desc": ""
+  }
+}
