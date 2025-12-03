@@ -1,0 +1,129 @@
+================================================================================
+RESEARCH QUESTION 3: How does weather affect wheat yield in Kansas?
+NOTE: Winter wheat has a unique growing cycle (Sept-June)
+================================================================================
+
+[STEP 1] Loading and merging data...
+Weather data: 1354 weekly records from 2000 to 2025
+Wheat data: 252 annual records from 2000 to 2025
+
+Aggregating weather for winter wheat growing cycle...
+Fall (Sept-Nov previous year) + Winter (Dec-Feb) + Spring (Mar-May)
+
+Merged dataset: 238 years of data
+Years covered: 2001 - 2025
+Saved merged data to: analysis_data_q3.csv
+
+[STEP 2] Exploratory Data Analysis...
+
+--- Summary Statistics ---
+          year   yield  fall_tmax  ...  total_solar  avg_temp  temp_range
+count   238.00  238.00     238.00  ...       238.00    238.00      238.00
+mean   2010.82   41.23      69.32  ...      4023.08     49.83       18.75
+std       7.08    8.17       2.15  ...       141.78      1.70        0.98
+min    2001.00   25.00      63.63  ...      3661.16     46.36       16.34
+25%    2005.00   36.00      68.20  ...      3933.24     48.56       18.00
+50%    2009.00   40.00      69.07  ...      4009.89     49.77       18.84
+75%    2016.75   47.00      71.25  ...      4109.36     50.84       19.35
+max    2025.00   76.70      73.76  ...      4261.26     52.85       21.20
+
+[8 rows x 20 columns]
+
+Creating distribution plots...
+Saved: eda_distributions_q3.png
+
+Computing correlations...
+Saved: eda_correlation_matrix_q3.png
+
+Correlations with Yield:
+yield            1.000000
+total_precip     0.434332
+fall_precip      0.403551
+spring_precip    0.294060
+winter_tmin      0.057322
+avg_tmin        -0.011761
+spring_tmax     -0.083914
+avg_temp        -0.093873
+avg_tmax        -0.155911
+temp_range      -0.288016
+total_solar     -0.448614
+Name: yield, dtype: float64
+
+Creating scatter plots...
+Saved: eda_scatter_plots_q3.png
+Saved: eda_boxplots_q3.png
+
+[STEP 3] Building Predictive Models...
+
+Train set: 190 samples
+Test set: 48 samples
+
+--- MODEL 1: Multiple Linear Regression ---
+R² (Training): 0.2350
+R² (Testing): 0.3437
+RMSE: 5.8274 BU/ACRE
+MAE: 4.5338 BU/ACRE
+Cross-validation R² (5-fold): 0.2133 (+/- 0.0725)
+
+Feature Coefficients:
+  avg_tmax: 0.5319
+  avg_tmin: 0.2685
+  total_precip: 2.1244
+  total_solar: -3.0718
+  temp_range: 0.5951
+  Intercept: 41.2105
+
+--- MODEL 2: Polynomial Regression (degree 2) ---
+R² (Training): 0.4515
+R² (Testing): 0.3479
+RMSE: 5.8087 BU/ACRE
+MAE: 4.7389 BU/ACRE
+
+--- MODEL 3: Random Forest Regression ---
+R² (Training): 0.5980
+R² (Testing): 0.5228
+RMSE: 4.9692 BU/ACRE
+MAE: 3.8073 BU/ACRE
+Cross-validation R² (5-fold): 0.4746 (+/- 0.1595)
+
+Feature Importances:
+  avg_tmax: 0.0840
+  avg_tmin: 0.1631
+  total_precip: 0.4391
+  total_solar: 0.1477
+  temp_range: 0.1662
+
+[STEP 4] Model Comparison...
+
+================================================================================
+MODEL PERFORMANCE COMPARISON - WHEAT YIELD
+================================================================================
+                Model  R² (Train)  R² (Test)     RMSE      MAE
+    Linear Regression    0.234995   0.343699 5.827374 4.533755
+Polynomial Regression    0.451452   0.347908 5.808658 4.738948
+        Random Forest    0.598008   0.522763 4.969223 3.807316
+================================================================================
+
+Saved model comparison to: model_comparison_q3.csv
+
+[STEP 5] Creating model visualizations...
+Saved: model_predictions_comparison_q3.png
+Saved: model_performance_bars_q3.png
+Saved: feature_importance_rf_q3.png
+
+================================================================================
+ANALYSIS COMPLETE!
+================================================================================
+
+Generated files:
+  - analysis_data_q3.csv (merged dataset)
+  - model_comparison_q3.csv (performance metrics)
+  - eda_distributions_q3.png
+  - eda_correlation_matrix_q3.png
+  - eda_scatter_plots_q3.png
+  - eda_boxplots_q3.png
+  - model_predictions_comparison_q3.png
+  - model_performance_bars_q3.png
+  - feature_importance_rf_q3.png
+
+Process finished with exit code 0
