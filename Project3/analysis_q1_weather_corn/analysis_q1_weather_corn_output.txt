@@ -1,0 +1,125 @@
+================================================================================
+RESEARCH QUESTION 1: How does weather affect corn yield in Iowa?
+================================================================================
+
+[STEP 1] Loading and merging data...
+Weather data: 1354 weekly records from 2000 to 2025
+Corn data: 153 annual records from 2000 to 2025
+
+Aggregating weather for growing season (April-September)...
+
+Merged dataset: 153 years of data
+Years covered: 2000 - 2025
+Saved merged data to: analysis_data_q1.csv
+
+[STEP 2] Exploratory Data Analysis...
+
+--- Summary Statistics ---
+          year   yield  avg_tmax  ...  total_solar  avg_temp  temp_range
+count   153.00  153.00    153.00  ...       153.00    153.00      153.00
+mean   2012.33  153.48     75.06  ...      3772.31     66.20       17.72
+std       7.46   62.04      1.52  ...       134.17      1.28        0.85
+min    2000.00   15.00     72.08  ...      3546.68     63.70       16.45
+25%    2006.00  148.00     74.08  ...      3678.39     65.29       17.10
+50%    2012.00  173.00     75.07  ...      3744.34     66.31       17.52
+75%    2019.00  192.00     75.88  ...      3816.70     67.10       18.18
+max    2025.00  222.00     79.07  ...      4071.74     69.45       20.04
+
+[8 rows x 8 columns]
+
+Creating distribution plots...
+Saved: eda_distributions.png
+
+Computing correlations...
+Saved: eda_correlation_matrix.png
+
+Correlations with Yield:
+yield           1.000000
+total_precip    0.061456
+temp_range      0.046678
+avg_tmax        0.037953
+avg_temp        0.029504
+avg_tmin        0.015581
+total_solar    -0.013044
+Name: yield, dtype: float64
+
+Creating scatter plots...
+Saved: eda_scatter_plots.png
+Saved: eda_boxplots.png
+
+[STEP 3] Building Predictive Models...
+
+Train set: 122 samples
+Test set: 31 samples
+
+--- MODEL 1: Multiple Linear Regression ---
+R² (Training): 0.0249
+R² (Testing): -0.0945
+RMSE: 52.1078 BU/ACRE
+MAE: 40.3426 BU/ACRE
+Cross-validation R² (5-fold): -0.0957 (+/- 0.1196)
+
+Feature Coefficients:
+  avg_tmax: 7.2293
+  avg_tmin: 3.1701
+  total_precip: 8.2131
+  total_solar: -7.2930
+  temp_range: 8.4790
+  Intercept: 151.0820
+
+--- MODEL 2: Polynomial Regression (degree 2) ---
+R² (Training): 0.1173
+R² (Testing): -0.5370
+RMSE: 61.7482 BU/ACRE
+MAE: 47.3292 BU/ACRE
+
+--- MODEL 3: Random Forest Regression ---
+R² (Training): 0.1606
+R² (Testing): -0.7546
+RMSE: 65.9748 BU/ACRE
+MAE: 50.3362 BU/ACRE
+Cross-validation R² (5-fold): -0.3963 (+/- 0.1641)
+
+Feature Importances:
+  avg_tmax: 0.3072
+  avg_tmin: 0.1972
+  total_precip: 0.1955
+  total_solar: 0.1538
+  temp_range: 0.1463
+
+[STEP 4] Model Comparison...
+
+================================================================================
+MODEL PERFORMANCE COMPARISON
+================================================================================
+                Model  R² (Train)  R² (Test)      RMSE       MAE
+    Linear Regression    0.024888  -0.094507 52.107763 40.342638
+Polynomial Regression    0.117338  -0.536961 61.748244 47.329219
+        Random Forest    0.160550  -0.754564 65.974761 50.336236
+================================================================================
+
+Saved model comparison to: model_comparison_q1.csv
+
+[STEP 5] Creating model visualizations...
+Saved: model_predictions_comparison.png
+Saved: model_performance_bars.png
+Saved: feature_importance_rf.png
+
+================================================================================
+ANALYSIS COMPLETE!
+================================================================================
+
+Generated files:
+  - analysis_data_q1.csv (merged dataset)
+  - model_comparison_q1.csv (performance metrics)
+  - eda_distributions.png
+  - eda_correlation_matrix.png
+  - eda_scatter_plots.png
+  - eda_boxplots.png
+  - model_predictions_comparison.png
+  - model_performance_bars.png
+  - feature_importance_rf.png
+
+Next step: Use these results and visualizations in your written report!
+
+Process finished with exit code 0
