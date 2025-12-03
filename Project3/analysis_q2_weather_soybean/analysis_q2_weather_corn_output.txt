@@ -1,0 +1,125 @@
+================================================================================
+RESEARCH QUESTION 2: How does weather affect soybean yield in Illinois?
+================================================================================
+
+[STEP 1] Loading and merging data...
+Weather data: 1354 weekly records from 2000 to 2025
+Soybean data: 128 annual records from 2000 to 2025
+
+Aggregating weather for soybean growing season (May-September)...
+
+Merged dataset: 128 years of data
+Years covered: 2000 - 2025
+Saved merged data to: analysis_data_q2.csv
+
+[STEP 2] Exploratory Data Analysis...
+
+--- Summary Statistics ---
+          year   yield  avg_tmax  ...  total_solar  avg_temp  temp_range
+count   128.00  128.00    128.00  ...       128.00    128.00      128.00
+mean   2012.40   52.10     80.16  ...      3214.00     71.51       17.30
+std       7.51    8.81      1.62  ...       102.12      1.40        0.89
+min    2000.00   37.00     77.30  ...      3031.70     69.31       15.80
+25%    2006.00   44.00     78.99  ...      3154.19     70.61       16.64
+50%    2012.00   50.50     80.12  ...      3200.15     71.31       17.18
+75%    2019.00   61.00     81.21  ...      3275.46     72.22       17.80
+max    2025.00   67.00     83.90  ...      3444.21     74.46       19.54
+
+[8 rows x 8 columns]
+
+Creating distribution plots...
+Saved: eda_distributions_q2.png
+
+Computing correlations...
+Saved: eda_correlation_matrix_q2.png
+
+Correlations with Yield:
+yield           1.000000
+temp_range      0.268639
+total_precip    0.242124
+avg_tmax        0.192452
+avg_temp        0.137827
+total_solar     0.107205
+avg_tmin        0.056481
+Name: yield, dtype: float64
+
+Creating scatter plots...
+Saved: eda_scatter_plots_q2.png
+Saved: eda_boxplots_q2.png
+
+[STEP 3] Building Predictive Models...
+
+Train set: 102 samples
+Test set: 26 samples
+
+--- MODEL 1: Multiple Linear Regression ---
+R² (Training): 0.2938
+R² (Testing): 0.4059
+RMSE: 6.3391 BU/ACRE
+MAE: 5.1775 BU/ACRE
+Cross-validation R² (5-fold): 0.1980 (+/- 0.1657)
+
+Feature Coefficients:
+  avg_tmax: 1.7467
+  avg_tmin: -0.2289
+  total_precip: 5.5704
+  total_solar: 0.6801
+  temp_range: 3.6251
+  Intercept: 52.0588
+
+--- MODEL 2: Polynomial Regression (degree 2) ---
+R² (Training): 0.6562
+R² (Testing): 0.6506
+RMSE: 4.8613 BU/ACRE
+MAE: 4.1937 BU/ACRE
+
+--- MODEL 3: Random Forest Regression ---
+R² (Training): 0.9721
+R² (Testing): 0.9288
+RMSE: 2.1944 BU/ACRE
+MAE: 1.8139 BU/ACRE
+Cross-validation R² (5-fold): 0.9334 (+/- 0.0254)
+
+Feature Importances:
+  avg_tmax: 0.0214
+  avg_tmin: 0.0473
+  total_precip: 0.4064
+  total_solar: 0.0580
+  temp_range: 0.4669
+
+[STEP 4] Model Comparison...
+
+================================================================================
+MODEL PERFORMANCE COMPARISON - SOYBEAN YIELD
+================================================================================
+                Model  R² (Train)  R² (Test)     RMSE      MAE
+    Linear Regression    0.293785   0.405908 6.339089 5.177526
+Polynomial Regression    0.656152   0.650620 4.861264 4.193668
+        Random Forest    0.972101   0.928807 2.194408 1.813895
+================================================================================
+
+Saved model comparison to: model_comparison_q2.csv
+
+[STEP 5] Creating model visualizations...
+Saved: model_predictions_comparison_q2.png
+Saved: model_performance_bars_q2.png
+Saved: feature_importance_rf_q2.png
+
+================================================================================
+ANALYSIS COMPLETE!
+================================================================================
+
+Generated files:
+  - analysis_data_q2.csv (merged dataset)
+  - model_comparison_q2.csv (performance metrics)
+  - eda_distributions_q2.png
+  - eda_correlation_matrix_q2.png
+  - eda_scatter_plots_q2.png
+  - eda_boxplots_q2.png
+  - model_predictions_comparison_q2.png
+  - model_performance_bars_q2.png
+  - feature_importance_rf_q2.png
+
+Next step: Compare Q1 (corn) vs Q2 (soybeans) results in your report!
+
+Process finished with exit code 0
